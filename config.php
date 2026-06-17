@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db   = 'im102_lab2-alindayo';
+$db   = 'im102_lab2_alindayo';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
