@@ -33,7 +33,6 @@ $sql .= " ORDER BY p.id DESC";
 
 $result = $conn->query($sql);
 
-/* ================= STATS ================= */
 
 $stats_sql = "SELECT 
  COUNT(*) AS total_products,
@@ -56,6 +55,8 @@ if (!empty($category)) {
 $stats = $conn->query($stats_sql)->fetch_assoc();
 
 $categories = $conn->query("SELECT DISTINCT name FROM categories ORDER BY name");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -110,6 +111,7 @@ $categories = $conn->query("SELECT DISTINCT name FROM categories ORDER BY name")
 </div>
 
 <a href="add.php" class="add-btn">+ Add Product</a>
+<a href="report.php" class="add-btn">View Reports</a>
 
 <table>
 <tr>
@@ -138,6 +140,7 @@ echo "<tr class='$lowStockClass'>
 <td>{$row['supplier']}</td>
 <td>{$row['created_at']}</td>
 <td><a href='edit.php?id={$row['id']}'>Edit</a></td>
+<td><a href='delete.php?id={$row['id']}' onclick=\"return confirm('Are you sure?')\">Delete</a></td>
 </tr>";
 }
 } else {
